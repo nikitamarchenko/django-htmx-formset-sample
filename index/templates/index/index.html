@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <title>article</title>
+        <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            padding-top: 2em;
+        }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"
+                integrity="sha384-ZBXiYtYQ6hJ2Y0ZNoYuI+Nq5MqWBr+chMrS/RkXpNzQCApHEhOt2aY8EJgqwHLkJ"
+                crossorigin="anonymous"></script>
+    </head>
+    <body>
+        {% if posted %}
+        <pre>#
+            {% for form in formset %}{{ form.cleaned_data }}{% endfor %}
+        #</pre>
+        {% else %}
+            {% include "index/form.html" %}
+        {% endif %}
+    </body>
+</html>
