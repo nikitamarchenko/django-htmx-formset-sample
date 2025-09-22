@@ -24,9 +24,13 @@
     </head>
     <body>
         {% if posted %}
-        <pre>#
-            {% for form in formset %}{{ form.cleaned_data }}{% endfor %}
-        #</pre>
+        <pre>
+            {% if invalid %}
+            INVALID: {{ invalid }}
+            {% endif %}
+            {% for form in formset %}{{ form.cleaned_data }}
+            {% endfor %}
+        </pre>
         {% else %}
             {% include "index/form.html" %}
         {% endif %}

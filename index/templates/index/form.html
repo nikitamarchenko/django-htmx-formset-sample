@@ -1,7 +1,7 @@
 <form id="articles-form" action="/" method="post">
     {% csrf_token %}
+    {{ formset.management_form }}
     {{ formset }}
-    <input name="fcount" type="hidden" value="{{ fcount }}">
     <button hx-post="add-form" hx-target="#articles-form">add form</button>
     <br>
     <button>save</button>

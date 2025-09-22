@@ -19,9 +19,13 @@ def index(request):
         return render(request, "index/index.html", context)
     if request.method == "POST":
         formset = ArticleFormSet(request.POST)
-        if formset.is_valid():
-            return render(request, "index/index.html", context = {"formset": formset, "posted": True})
-
+        if not formset.is_valid():
+            return render(request, "index/index.html", context = {"formset": formset, "posted": True, "invalid": formset.error_messages})
+    
+        for f in formset:
+            print(f.cleaned_data['title'])
+        
+        return render(request, "index/index.html", context = {"formset": formset, "posted": True})    
 
 def add_form(request):
     if request.method == "POST":
